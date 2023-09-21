@@ -18,6 +18,12 @@ class Organization {
   }
 }
 
+// 기존에 사용되는 bare 레코드 - Organization으로 캡슐화
+// const organizaiton = {
+//   name: "애크미 구스베리",
+//   country: "GB",
+// };
+
 const organizaiton = new Organization({
   name: "애크미 구스베리",
   country: "GB",
