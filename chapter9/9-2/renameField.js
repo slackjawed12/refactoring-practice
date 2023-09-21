@@ -4,10 +4,10 @@ class Organization {
     this._country = data.country;
   }
 
-  get name() {
+  get title() {
     return this._title;
   }
-  set name(aString) {
+  set title(aString) {
     this._title = aString;
   }
   get country() {
