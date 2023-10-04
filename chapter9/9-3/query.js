@@ -13,3 +13,5 @@ class ProductionPlan {
     this._adjustments.push(anAdjustment);
   }
 }
+
+export default {};
