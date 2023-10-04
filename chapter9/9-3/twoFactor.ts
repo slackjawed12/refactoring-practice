@@ -4,26 +4,30 @@ class Adjustment {
 }
 
 class ProductionPlan {
-  _production: number;
   _adjustment: Adjustment[];
+  _initialProduction: number;
+  _productionAccumulator: number;
 
   constructor(production: number) {
-    this._production = production;
+    this._initialProduction = production;
+    this._productionAccumulator = 0;
     this._adjustment = [];
   }
 
   // 앞선 예시와 같이 assert를 하면, production 초기값이 0이 아닐 때 assertion이 실패한다.
+  // production 변수를 initialProduction과 productionAccumulator 두 개로 쪼갠다.
   get production() {
-    console.assert(this._production === this.calculatedProduction);
-    return this._production;
+    console.assert(
+      this._productionAccumulator === this.calculatedProductionAccumulator
+    );
+    return this._initialProduction + this._productionAccumulator;
   }
 
   applyAdjustment(anAdjustment: Adjustment) {
     this._adjustment.push(anAdjustment);
-    this._production += anAdjustment.amount;
   }
 
-  get calculatedProduction() {
+  get calculatedProductionAccumulator() {
     return this._adjustment.reduce((sum, a) => sum + a.amount, 0);
   }
 }
