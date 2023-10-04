@@ -2,15 +2,10 @@
 class ProductionPlan {
   constructor(production, adjustments) {
     this._production = production;
-    assert(this._production === this.calculatedProduction);
     this._adjustments = adjustments;
   }
 
   get production() {
-    return this.calculatedProduction;
-  }
-
-  get calculatedProduction() {
     return this._adjustments.reduce((sum, a) => sum + a.amount, 0);
   }
 
