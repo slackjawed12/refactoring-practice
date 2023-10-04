@@ -7,7 +7,7 @@ class ProductionPlan {
   }
 
   get production() {
-    return this._production;
+    return this.calculatedProduction;
   }
 
   get calculatedProduction() {
