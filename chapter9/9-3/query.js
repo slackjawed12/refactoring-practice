@@ -2,6 +2,7 @@
 class ProductionPlan {
   constructor(production, adjustments) {
     this._production = production;
+    assert(this._production === this.calculatedProduction);
     this._adjustments = adjustments;
   }
 
