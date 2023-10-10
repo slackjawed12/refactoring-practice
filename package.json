@@ -1,4 +1,13 @@
 {
   "name": "refactoring-practice",
-  "author": "slackjawed12"
+  "author": "slackjawed12",
+  "scripts": {
+    "test": "jest test/**"
+  },
+  "dependencies": {
+    "jest": "^29.7.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.5"
+  }
 }

@@ -1,4 +1,4 @@
-class Person {
+export class Person {
   _telephoneNumber: TelephoneNumber;
   constructor(officeAreaCode: string, officeNumber: string) {
     this._telephoneNumber = new TelephoneNumber(officeAreaCode, officeNumber);
@@ -21,7 +21,7 @@ class Person {
   }
 }
 
-class TelephoneNumber {
+export class TelephoneNumber {
   _areaCode: string;
   _number: string;
 
