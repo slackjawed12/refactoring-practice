@@ -1,7 +1,7 @@
 class Person {
-  _telephoneNumber;
-  constructor() {
-    this._telephoneNumber = new this._telephoneNumber();
+  _telephoneNumber: TelephoneNumber;
+  constructor(officeAreaCode: string, officeNumber: string) {
+    this._telephoneNumber = new TelephoneNumber(officeAreaCode, officeNumber);
   }
 
   get officeAreaCode() {
