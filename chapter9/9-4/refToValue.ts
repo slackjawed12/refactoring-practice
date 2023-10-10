@@ -24,6 +24,12 @@ class Person {
 class TelephoneNumber {
   _areaCode: string;
   _number: string;
+
+  constructor(areaCode: string, number: string) {
+    this._areaCode = areaCode;
+    this._number = number;
+  }
+
   get areaCode() {
     return this._areaCode;
   }
