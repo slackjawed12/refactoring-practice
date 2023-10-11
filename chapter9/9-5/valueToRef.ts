@@ -1,4 +1,4 @@
-class Order {
+export class Order {
   _number: number;
   _customer: Customer;
 
@@ -11,7 +11,7 @@ class Order {
   }
 }
 
-class Customer {
+export class Customer {
   _id: number;
   constructor(id) {
     this._id = id;
