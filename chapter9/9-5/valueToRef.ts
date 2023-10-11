@@ -1,10 +1,12 @@
+import { registerCustomer } from "./CustomerRepository";
+
 export class Order {
   _number: number;
   _customer: Customer;
 
   constructor(data) {
     this._number = data.number;
-    this._customer = new Customer(data.customer);
+    this._customer = registerCustomer(data.customer);
   }
   get customer() {
     return this._customer;
