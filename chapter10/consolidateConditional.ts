@@ -23,3 +23,5 @@ function someFunction(anEmployee: Employee) {
   }
   return 0.5;
 }
+
+export default {};
