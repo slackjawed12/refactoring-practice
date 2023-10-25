@@ -6,7 +6,7 @@ class Employee {
 function payAmount(employee: Employee) {
   let result: { amount: number; reasonCode: string };
   if (employee.isSeperated) {
-    result = { amount: 0, reasonCode: "SEP" };
+    return { amount: 0, reasonCode: "SEP" };
   } else {
     if (employee.isRetired) {
       result = { amount: 0, reasonCode: "RET" };
