@@ -5,12 +5,13 @@ class Employee {
 }
 
 function disabilityAmount(anEmployee: Employee) {
-  if (
-    anEmployee.seniority < 2 ||
-    anEmployee.monthsDisabled > 12 ||
-    anEmployee.isPartTime
-  )
-    return 0;
-
+  if (isNotEligibleForDisability()) return 0;
+  function isNotEligibleForDisability() {
+    return (
+      anEmployee.seniority < 2 ||
+      anEmployee.monthsDisabled > 12 ||
+      anEmployee.isPartTime
+    );
+  }
   // 장애 수당 계산
 }
