@@ -7,14 +7,12 @@ function payAmount(employee: Employee) {
   let result: { amount: number; reasonCode: string };
   if (employee.isSeperated) {
     return { amount: 0, reasonCode: "SEP" };
-  } else {
-    if (employee.isRetired) {
-      result = { amount: 0, reasonCode: "RET" };
-    } else {
-      // 급여를 계산한다.
-      result = someFinalComputation();
-    }
   }
+  if (employee.isRetired) {
+    return { amount: 0, reasonCode: "RET" };
+  }
+  // 급여를 계산한다.
+  result = someFinalComputation();
   return result;
 }
 
