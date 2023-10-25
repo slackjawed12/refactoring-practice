@@ -8,8 +8,8 @@ function adjustedCapital(anInstrument) {
   )
     return result;
 
-  result =
+  return (
     (anInstrument.income / anInstrument.duration) *
-    anInstrument.adjustmentFactor;
-  return result;
+    anInstrument.adjustmentFactor
+  );
 }
