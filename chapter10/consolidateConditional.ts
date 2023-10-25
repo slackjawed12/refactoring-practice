@@ -2,6 +2,7 @@ class Employee {
   seniority: number;
   monthsDisabled: number;
   isPartTime: boolean;
+  onVacation: boolean;
 }
 
 function disabilityAmount(anEmployee: Employee) {
@@ -14,4 +15,13 @@ function disabilityAmount(anEmployee: Employee) {
     );
   }
   // 장애 수당 계산
+}
+
+function someFunction(anEmployee: Employee) {
+  if (anEmployee.onVacation) {
+    if (anEmployee.seniority > 10) {
+      return 1;
+    }
+  }
+  return 0.5;
 }
