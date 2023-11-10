@@ -2,14 +2,7 @@
  * 투자 등급
  */
 function rating(voyage, history) {
-  const vpf = voyageProfitFactor(voyage, history);
-  const vr = voyageRisk(voyage);
-  const chr = captainHistoryRisk(voyage, history);
-  if (vpf * 3 > vr + chr * 2) {
-    return "A";
-  } else {
-    return "B";
-  }
+  return new Rating(voyage, history).value;
 }
 
 /**
@@ -159,6 +152,9 @@ class Rating {
     return this.history.some((v) => "중국" === v.zone);
   }
 }
+
+class ExperiencedChinaRating extends Rating {}
+
 const myRating = rating(voyageInfo, historyList);
 console.log(myRating);
 
