@@ -2,7 +2,7 @@
  * 투자 등급
  */
 function rating(voyage, history) {
-  return new Rating(voyage, history).value;
+  return createRating(voyage, history).value;
 }
 
 /**
