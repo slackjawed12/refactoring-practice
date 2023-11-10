@@ -69,3 +69,26 @@ function voyageProfitFactor(voyage, history) {
   }
   return result;
 }
+
+const voyageInfo = { zone: "서인도", length: 10 };
+const historyList = [
+  {
+    zone: "동인도",
+    profit: 5,
+  },
+  {
+    zone: "서인도",
+    profit: 15,
+  },
+  {
+    zone: "중국",
+    profit: -2,
+  },
+  {
+    zone: "서아프리카",
+    profvit: 7,
+  },
+];
+
+const myRating = rating(voyageInfo, historyList);
+console.log(myRating);
