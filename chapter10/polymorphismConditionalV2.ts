@@ -85,17 +85,11 @@ class ExperiencedChinaRating extends Rating {
     return Math.max(result, 0);
   }
   get voyageProfitFactor() {
-    let result = 2;
-    if (this.voyage.zone === "중국") result += 1;
-    if (this.voyage.zone === "동인도") result += 1;
-    result += this.historyLengthFactor;
-    result += this.voyageLengthFactor;
-    return result;
+    return super.voyageProfitFactor + 3;
   }
 
   get voyagelengthFactor() {
     let result = 0;
-    result += 3;
     if (this.history.length > 12) result += 1;
     if (this.voyage.length > 18) result -= 1;
     return result;
