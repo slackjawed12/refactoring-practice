@@ -5,6 +5,12 @@ function rating(voyage, history) {
   return createRating(voyage, history).value;
 }
 
+function createRating(voyage, history) {
+  if (voyage.zone === "중국" && history.some((v) => "중국" === v.zone)) {
+    return new ExperiencedChinaRating(voyage, history);
+  } else return new Rating(voyage, history);
+}
+
 type Voyage = {
   zone: string;
   length: number;
@@ -61,13 +67,17 @@ class Rating {
 
   get voyageAndHistoryLengthFactor() {
     let result = 0;
-    if (this.history.length > 8) result += 1;
+    result += this.historyLengthFactor;
     if (this.voyage.length > 14) result -= 1;
     return result;
   }
 
   get hasChinaHistory() {
     return this.history.some((v) => "중국" === v.zone);
+  }
+
+  get historyLengthFactor() {
+    return this.history.length > 8 ? 1 : 0;
   }
 }
 
@@ -87,17 +97,15 @@ class ExperiencedChinaRating extends Rating {
   get voyageAndHistoryLengthFactor() {
     let result = 0;
     result += 3;
-    if (this.history.length > 10) result += 1;
+    result += this.historyLengthFactor;
     if (this.history.length > 12) result += 1;
     if (this.voyage.length > 18) result -= 1;
     return result;
   }
-}
 
-function createRating(voyage, history) {
-  if (voyage.zone === "중국" && history.some((v) => "중국" === v.zone)) {
-    return new ExperiencedChinaRating(voyage, history);
-  } else return new Rating(voyage, history);
+  get historyLengthFactor() {
+    return this.history.length > 10 ? 1 : 0;
+  }
 }
 
 const voyageInfo = { zone: "서인도", length: 10 };
