@@ -70,10 +70,6 @@ class Rating {
     return this.voyage.length > 14 ? -1 : 0;
   }
 
-  get hasChinaHistory() {
-    return this.history.some((v) => "중국" === v.zone);
-  }
-
   get historyLengthFactor() {
     return this.history.length > 8 ? 1 : 0;
   }
