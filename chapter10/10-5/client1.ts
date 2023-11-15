@@ -1,11 +1,11 @@
-import { Site, Customer } from "./specialCase";
+import { Site, Customer, isUnknown } from "./specialCase";
 
 export const client1 = (site) => {
   const aCustomer = site.customer;
   // ...
 
   let customerName;
-  if (aCustomer === "미확인 고객") {
+  if (isUnknown(aCustomer)) {
     customerName = "거주자";
   } else {
     customerName = aCustomer.name;

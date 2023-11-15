@@ -1,5 +1,7 @@
+import { isUnknown } from "./specialCase";
+
 export const client3 = (aCustomer, newPlan) => {
-  if (aCustomer !== "미확인 고객") {
+  if (isUnknown(aCustomer)) {
     aCustomer.billingPlan = newPlan;
   }
 

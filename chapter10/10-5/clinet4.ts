@@ -1,8 +1,9 @@
+import { isUnknown } from "./specialCase";
+
 export const client4 = (aCustomer) => {
-  const weeksDeliquent =
-    aCustomer === "미확인 고객"
-      ? 0
-      : aCustomer.paymentHistory.weeksDeliquentInLastYear;
+  const weeksDeliquent = isUnknown(aCustomer)
+    ? 0
+    : aCustomer.paymentHistory.weeksDeliquentInLastYear;
 
   return weeksDeliquent;
 };
