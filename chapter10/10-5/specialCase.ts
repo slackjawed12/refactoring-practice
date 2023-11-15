@@ -31,6 +31,10 @@ export class Customer {
   get paymentHistory() {
     return this._paymentHistory;
   }
+
+  get isUnkown() {
+    return false;
+  }
 }
 
 export default {};
