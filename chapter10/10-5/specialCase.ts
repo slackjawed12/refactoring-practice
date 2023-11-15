@@ -1,10 +1,12 @@
 export class Site {
-  _customer: Customer;
+  _customer: Customer | string;
   constructor(customer) {
     this._customer = customer;
   }
   get customer() {
-    return this._customer;
+    return this._customer === "미확인 고객"
+      ? new UnkownCustomer()
+      : this._customer;
   }
 }
 
