@@ -37,4 +37,10 @@ export class Customer {
   }
 }
 
+export class UnkownCustomer {
+  get isUnknown() {
+    return true;
+  }
+}
+
 export default {};
