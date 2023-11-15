@@ -1,4 +1,4 @@
-class Site {
+export class Site {
   _customer: Customer;
   constructor(customer) {
     this._customer = customer;
@@ -8,7 +8,7 @@ class Site {
   }
 }
 
-class Customer {
+export class Customer {
   _name;
   _billingPlan;
   _paymentHistory;
