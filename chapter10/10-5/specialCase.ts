@@ -37,10 +37,20 @@ export class Customer {
   }
 }
 
+/**
+ * javascript 동적 타이핑 특성 상 서브클래스로 만들지 않는 것이 나음
+ */
 export class UnkownCustomer {
   get isUnknown() {
     return true;
   }
 }
 
+export function isUnknown(arg) {
+  if (!(arg instanceof Customer || arg === "미확인 고객")) {
+    throw new Error(`잘못된 값과 비교 : <${arg}>`);
+  }
+
+  return arg === "미확인 고객";
+}
 export default {};
