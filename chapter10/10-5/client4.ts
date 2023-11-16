@@ -1,5 +1,3 @@
-import { isUnknown } from "./specialCase";
-
 export const client4 = (aCustomer) => {
   const weeksDeliquent = aCustomer.paymentHistory.weeksDeliquentInLastYear;
 

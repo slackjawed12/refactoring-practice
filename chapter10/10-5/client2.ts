@@ -1,7 +1,5 @@
-import { Customer, isUnknown } from "./specialCase";
-
 export const client2 = (aCustomer, registry) => {
-  const plan = isUnknown(aCustomer)
+  const plan = aCustomer.isUnknown
     ? registry.billingPlans.basic
     : aCustomer.billingPlan;
 

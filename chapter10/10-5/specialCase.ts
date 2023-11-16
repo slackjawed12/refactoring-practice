@@ -67,11 +67,4 @@ export class NullPaymentHistory {
   }
 }
 
-export function isUnknown(arg) {
-  if (!(arg instanceof Customer || arg instanceof UnkownCustomer)) {
-    throw new Error(`잘못된 값과 비교 : <${arg}>`);
-  }
-
-  return arg.isUnknown;
-}
 export default {};
