@@ -46,6 +46,9 @@ export class UnkownCustomer {
   get isUnknown() {
     return true;
   }
+  get name() {
+    return "거주자";
+  }
 }
 
 export function isUnknown(arg) {
