@@ -49,6 +49,11 @@ export class UnkownCustomer {
   get name() {
     return "거주자";
   }
+
+  get billingPlan() {
+    return registry.billingPlans.basic;
+  }
+  set billingPlan(arg) {} // 무시
 }
 
 export function isUnknown(arg) {
