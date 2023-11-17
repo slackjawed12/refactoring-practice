@@ -1,12 +1,18 @@
+import assert from "assert";
 class Customer {
-  discountRate;
+  _discountRate;
 
   applyDiscount(aNumber) {
-    if (!this.discountRate) {
+    if (!this._discountRate) {
       return aNumber;
     }
 
-    assert(this.discountRate >= 0);
-    return aNumber - this.discountRate * aNumber;
+    assert(this._discountRate >= 0);
+    return aNumber - this._discountRate * aNumber;
+  }
+
+  set discountRate(aNumber) {
+    assert(null === aNumber || aNumber >= 0);
+    this._discountRate = aNumber;
   }
 }
