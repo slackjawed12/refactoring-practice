@@ -1,0 +1,18 @@
+let people = ["조커", "배트맨", "사루만"];
+const sendAlert = () => {
+  console.log("악당 나타남");
+};
+
+let found = false;
+for (const p of people) {
+  if (!found) {
+    if (p === "조커") {
+      sendAlert();
+      found = true;
+    }
+    if (p === "사루만") {
+      sendAlert();
+      found = true;
+    }
+  }
+}
