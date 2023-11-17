@@ -2,6 +2,11 @@ class Customer {
   discountRate;
 
   applyDiscount(aNumber) {
-    return this.discountRate ? aNumber - this.discountRate * aNumber : aNumber;
+    if (!this.discountRate) {
+      return aNumber;
+    }
+
+    assert(this.discountRate >= 0);
+    return aNumber - this.discountRate * aNumber;
   }
 }
