@@ -25,3 +25,6 @@ function findMiscreant(people) {
 }
 
 function setOffAlarms() {}
+
+const people = ["배트맨", "조커", "스파이더맨", "사루만"];
+const found = alertForMiscreant(people);
