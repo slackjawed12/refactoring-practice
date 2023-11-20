@@ -8,16 +8,12 @@ function baseCharge(usage: number) {
   const amount =
     withinBand(usage, 0, 100) * 0.03 +
     withinBand(usage, 100, 200) * 0.05 +
-    topBand(usage) * 0.07;
+    withinBand(usage, 200, Infinity) * 0.07;
   return usd(amount);
 }
 
 function usd(num: number) {
   return num / 1000;
-}
-
-function topBand(usage: number) {
-  return usage > 200 ? usage - 200 : 0;
 }
 
 function withinBand(usage: number, bottom: number, top: number) {
