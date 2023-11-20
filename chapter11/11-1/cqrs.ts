@@ -1,15 +1,7 @@
 function alertForMiscreant(people) {
-  for (const p of people) {
-    if (p === "조커") {
-      setOffAlarms();
-      return;
-    }
-    if (p === "사루만") {
-      setOffAlarms();
-      return;
-    }
+  if (findMiscreant(people) !== "") {
+    setOffAlarms();
   }
-  return;
 }
 
 function findMiscreant(people) {
@@ -27,5 +19,4 @@ function findMiscreant(people) {
 function setOffAlarms() {}
 
 const people = ["배트맨", "조커", "스파이더맨", "사루만"];
-const found = findMiscreant(people);
 alertForMiscreant(people);
