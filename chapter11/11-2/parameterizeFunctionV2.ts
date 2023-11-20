@@ -29,5 +29,5 @@ function topBand(usage: number) {
 }
 
 function withinBand(usage: number, bottom: number, top: number) {
-  return usage > bottom ? Math.min(usage, 200) - bottom : 0;
+  return usage > bottom ? Math.min(usage, top) - bottom : 0;
 }
