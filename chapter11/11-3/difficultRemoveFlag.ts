@@ -23,4 +23,12 @@ function deliveryDate(anOrder, isRush: boolean) {
   return result;
 }
 
+function rushDeliveryDate(anOrder) {
+  return deliveryDate(anOrder, true);
+}
+
+function regularDeliveryDate(anOrder) {
+  return deliveryDate(anOrder, false);
+}
+
 export default {};
