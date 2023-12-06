@@ -7,16 +7,11 @@ class HeatingPlan {
   constructor(temperatureRange: { low: number; high: number }) {
     this._temperatureRange = temperatureRange;
   }
-  withinRange(bottom: number, top: number) {
+  withinRange(tempRange) {
     return (
-      bottom >= this._temperatureRange.low && top <= this._temperatureRange.high
+      tempRange.low >= this._temperatureRange.low &&
+      tempRange.high <= this._temperatureRange.high
     );
-  }
-  xxNEWwithinRange(tempRange) {
-    const low = tempRange.low;
-    const high = tempRange.high;
-    const isWithinRange = this.withinRange(low, high);
-    return isWithinRange;
   }
 }
 
@@ -29,7 +24,7 @@ const aRoom = {
 };
 const tempRange = aRoom.daysTempRange;
 const aPlan = new HeatingPlan({ low: 20, high: 30 });
-const isWithinRange = aPlan.xxNEWwithinRange(tempRange);
+const isWithinRange = aPlan.withinRange(tempRange);
 if (!isWithinRange) {
   alert.push("방 온도가 지정 범위를 벗어났습니다.");
 }
