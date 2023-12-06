@@ -26,7 +26,7 @@ const aRoom = {
 const aPlan = new HeatingPlan({ low: 20, high: 30 });
 const low = aRoom.daysTempRange.low;
 const high = aRoom.daysTempRange.high;
-if (!aPlan.withinRange(low, high)) {
+if (!aPlan.xxxNEWwithinRange(aRoom.daysTempRange)) {
   alert.push("방 온도가 지정 범위를 벗어났습니다.");
 }
 
