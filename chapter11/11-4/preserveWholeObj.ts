@@ -11,7 +11,9 @@ class HeatingPlan {
       bottom >= this._temperatureRange.low && top <= this._temperatureRange.high
     );
   }
-  xxxNEWwithinRange(aNumberRange) {}
+  xxxNEWwithinRange(aNumberRange: { low: number; high: number }) {
+    return this.withinRange(aNumberRange.low, aNumberRange.high);
+  }
 }
 
 // 호출자
