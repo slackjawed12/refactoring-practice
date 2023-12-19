@@ -22,6 +22,10 @@ class HeatingPlan {
 }
 
 // 호출자
+// 리팩터링 결과:
+// 단점 : 의존성을 모듈 밖으로 밀어내므로 호출자 쪽 코드는 다루기 어려워진다.
+// 장점 : HeatingPlan 클래스는 전역객체인 온도조절기(thermostat)와의 결합이 끊어진다
+// 장점2 : HeatingPlan 클래스는 불변이 되어 targetTemperature 메서드가 참조 투명해진다.
 const thePlan = new HeatingPlan(50, 10);
 const setToHeat = () => {};
 const setToCool = () => {};
