@@ -6,7 +6,9 @@
 class Person {
   _name: string;
   _id: string;
-  constructor() {}
+  constructor(id: string) {
+    this.id = id;
+  }
   get name() {
     return this._name;
   }
@@ -21,6 +23,5 @@ class Person {
   }
 }
 
-const martin = new Person();
+const martin = new Person("1234");
 martin.name = "마틴";
-martin.id = "1234";
