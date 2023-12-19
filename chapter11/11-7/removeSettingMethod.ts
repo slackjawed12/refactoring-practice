@@ -20,3 +20,5 @@ class Person {
 
 const martin = new Person("1234", "마틴");
 console.log(martin);
+
+export default {};
