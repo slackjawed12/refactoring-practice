@@ -6,22 +6,17 @@
 class Person {
   _name: string;
   _id: string;
-  constructor(id: string) {
-    this.id = id;
+  constructor(id: string, name: string) {
+    this._id = id;
+    this._name = name;
   }
   get name() {
     return this._name;
   }
-  set name(arg) {
-    this._name = arg;
-  }
   get id() {
     return this._id;
   }
-  set id(arg) {
-    this._id = arg;
-  }
 }
 
-const martin = new Person("1234");
-martin.name = "마틴";
+const martin = new Person("1234", "마틴");
+console.log(martin);
