@@ -16,6 +16,10 @@ class Employee {
   }
 }
 
+function createEmployee(name, typeCode) {
+  return new Employee(name, typeCode);
+}
+
 // 호출자
 const document = {
   name: "강백호",
