@@ -27,7 +27,7 @@ const document = {
   leadEngineer: "윤대협",
 } as const;
 
-const candidate = new Employee(document.name, document.emType);
+const candidate = createEmployee(document.name, document.emType);
 const leadEngineer = new Employee(document.leadEngineer, "E");
 
 console.log(candidate, leadEngineer);
