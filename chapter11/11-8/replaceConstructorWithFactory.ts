@@ -28,7 +28,7 @@ const document = {
 } as const;
 
 const candidate = createEmployee(document.name, document.emType);
-const leadEngineer = new Employee(document.leadEngineer, "E");
+const leadEngineer = createEmployee(document.leadEngineer, "E");
 
 console.log(candidate, leadEngineer);
 export default {};
