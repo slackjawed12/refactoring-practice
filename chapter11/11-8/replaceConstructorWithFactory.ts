@@ -20,6 +20,10 @@ function createEmployee(name, typeCode) {
   return new Employee(name, typeCode);
 }
 
+function createEngineer(name) {
+  return new Employee(name, "E");
+}
+
 // 호출자
 const document = {
   name: "강백호",
@@ -28,7 +32,7 @@ const document = {
 } as const;
 
 const candidate = createEmployee(document.name, document.emType);
-const leadEngineer = createEmployee(document.leadEngineer, "E");
+const leadEngineer = createEngineer(document.leadEngineer);
 
 console.log(candidate, leadEngineer);
 export default {};
