@@ -17,3 +17,15 @@ class ChargeCalculator {
     return this.baseCharge + this._provider.connectionCharge;
   }
 }
+
+// 호출자
+const customer = {
+  baseRate: 1.0,
+};
+const usage = "";
+const provider = {
+  connectionCharge: 100,
+};
+
+let monthCharge = new ChargeCalculator(customer, usage, provider).charge;
+// ...
