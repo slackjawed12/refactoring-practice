@@ -27,5 +27,9 @@ const provider = {
   connectionCharge: 100,
 };
 
-let monthCharge = new ChargeCalculator(customer, usage, provider).charge;
+let monthCharge = charge(customer, usage, provider);
 // ...
+
+function charge(customer, usage, provider) {
+  return new ChargeCalculator(customer, usage, provider).charge;
+}
