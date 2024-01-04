@@ -1,6 +1,6 @@
 // 점수 계산 함수
 function score(candidate, medicalExam, scoringGuide) {
-  return new Scorer(candidate, medicalExam).execute(scoringGuide);
+  return new Scorer(candidate, medicalExam, scoringGuide).execute();
 }
 
 class Scorer {
@@ -12,12 +12,17 @@ class Scorer {
     isSmoker: boolean;
   };
 
-  constructor(candidate, medicalExam) {
+  _scoringGuide: {
+    stateWithLowCertification: (originState: string) => {};
+  };
+
+  constructor(candidate, medicalExam, scoringGuide) {
     this._candidate = candidate;
     this._medicalExam = medicalExam;
+    this._scoringGuide = scoringGuide;
   }
 
-  execute(scoringGuide) {
+  execute() {
     let result = 0;
     let healthLevel = 0;
     let highMedicalRiskFlag = false;
@@ -28,7 +33,9 @@ class Scorer {
     }
 
     let certificationGrade = "regular";
-    if (scoringGuide.stateWithLowCertification(this._candidate.originState)) {
+    if (
+      this._scoringGuide.stateWithLowCertification(this._candidate.originState)
+    ) {
       certificationGrade = "low";
       result -= 5;
     }
