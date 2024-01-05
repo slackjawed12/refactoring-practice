@@ -1,9 +1,7 @@
 const points: { elevation: number }[] = [];
-let totalTime = 0;
-let totalDistance = 0;
+const totalTime = calculateTime();
+const totalDistance = calculateDistance();
 const totalAscent = calculateAscent();
-calculateTime();
-calculateDistance();
 
 const pace = totalTime / 60 / totalDistance;
 
@@ -17,9 +15,13 @@ function calculateAscent() {
 }
 
 function calculateTime() {
+  const result = 1;
   // ...
+  return result;
 }
 
 function calculateDistance() {
+  const result = 1;
   // ...
+  return result;
 }
