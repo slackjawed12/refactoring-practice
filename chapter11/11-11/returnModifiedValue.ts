@@ -2,7 +2,7 @@ const points: { elevation: number }[] = [];
 let totalAscent = 0;
 let totalTime = 0;
 let totalDistance = 0;
-calculateAscent();
+totalAscent = calculateAscent();
 calculateTime();
 calculateDistance();
 
@@ -13,6 +13,7 @@ function calculateAscent() {
     const verticalChange = points[i].elevation - points[i - 1].elevation;
     totalAscent += verticalChange > 0 ? verticalChange : 0;
   }
+  return totalAscent;
 }
 
 function calculateTime() {
