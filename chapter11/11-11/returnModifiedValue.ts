@@ -1,8 +1,7 @@
 const points: { elevation: number }[] = [];
-let totalAscent = 0;
 let totalTime = 0;
 let totalDistance = 0;
-totalAscent = calculateAscent();
+const totalAscent = calculateAscent();
 calculateTime();
 calculateDistance();
 
