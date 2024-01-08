@@ -19,6 +19,7 @@ try {
   status = calculateShippingCosts(orderData);
 } catch (e) {
   // 예외처리로직
+  throw e;
 }
 if (status < 0) {
   errorList.push({
