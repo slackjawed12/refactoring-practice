@@ -11,18 +11,15 @@ class Order {
   }
 }
 
-const countryData = {
-  shippingRules: {
-    USA: {},
-    KOR: {},
-  },
-};
-
+// 상위 호출자
 let errorList: any[] = [];
 const orderData = new Order("1234");
-
-// 상위 호출자
-const status = calculateShippingCosts(orderData);
+let status;
+try {
+  status = calculateShippingCosts(orderData);
+} catch (e) {
+  // 예외처리로직
+}
 if (status < 0) {
   errorList.push({
     order: orderData,
@@ -41,6 +38,13 @@ function calculateShippingCosts(anOrder: Order) {
 
   // 더 관련 없는 코드
 }
+
+const countryData = {
+  shippingRules: {
+    USA: {},
+    KOR: {},
+  },
+};
 
 function localShippingRules(country: string) {
   const data = countryData.shippingRules[country];
