@@ -1,3 +1,5 @@
+import OrderPRocessingError from "./OrderProcessingError";
+
 class ShippingRules {
   constructor(data) {}
 }
@@ -19,8 +21,16 @@ try {
   status = calculateShippingCosts(orderData);
 } catch (e) {
   // 예외처리로직
-  throw e;
+  if (e instanceof OrderPRocessingError) {
+    errorList.push({
+      order: orderData,
+      errorCode: e.code,
+    });
+  } else {
+    throw e;
+  }
 }
+
 if (status < 0) {
   errorList.push({
     order: orderData,
