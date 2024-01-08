@@ -61,9 +61,9 @@ function localShippingRules(country: string) {
   const data = countryData.shippingRules[country];
   if (data) {
     return new ShippingRules(data);
+  } else {
+    throw new OrderPRocessingError(-23);
   }
-
-  return -23;
 }
 
 export default {};
