@@ -43,8 +43,7 @@ function calculateShippingCosts(anOrder: Order) {
   // 관련 없는 코드
   const shippingRules = localShippingRules(anOrder.country);
   if (shippingRules < 0) {
-    // 오류 전파
-    return shippingRules;
+    throw new Error("오류 코드가 다 사라지지 않았습니다.");
   }
 
   // 더 관련 없는 코드
