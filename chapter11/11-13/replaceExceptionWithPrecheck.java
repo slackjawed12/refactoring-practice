@@ -1,3 +1,5 @@
+public class AssertionError {}
+
 public class ResourcePool {
   public Resource get(){
     Resouce result;
@@ -8,7 +10,9 @@ public class ResourcePool {
       try {
         result = available.pop();
         allocated.add(result);
-      } catch(NoSuchElementException e) {}
+      } catch(NoSuchElementException e) {
+        throw new AssertionError("도달 불가");
+      }
     }
     return result;
   }
