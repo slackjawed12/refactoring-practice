@@ -1,4 +1,9 @@
-class Party {}
+class Party {
+  monthlyCost: number;
+  get annualCost() {
+    return this.monthlyCost * 12;
+  }
+}
 
 class Employee extends Party {
   monthlyCost: number;
