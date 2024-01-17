@@ -24,3 +24,4 @@ class Department extends Party {
 }
 
 export default {};
+// 생성자 시작 부분으로 옮길 수 없는 공통코드는 함수 추출하기 + 메서드 올리기 적용해서 본문을 끌어올린다.
