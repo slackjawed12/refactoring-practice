@@ -1,3 +1,4 @@
+// 직접상속하는 경우
 class Employee {
   _name: string;
   _type: string;
@@ -26,4 +27,8 @@ class Engineer extends Employee {
   get type() {
     return "engineer";
   }
+}
+
+function createEmployee(name, type) {
+  return new Employee(name, type);
 }
