@@ -9,3 +9,4 @@ class Salesperson extends Employee {
     return this._quota;
   }
 }
+export default {};
