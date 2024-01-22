@@ -2,7 +2,6 @@
 class Employee {
   _name: string;
   constructor(name: string, type: string) {
-    this.validateType(type);
     this._name = name;
   }
 
@@ -47,9 +46,9 @@ function createEmployee(name: string, type: string) {
       return new Salesperson(name, type);
     case "manager":
       return new Manager(name, type);
+    default:
+      throw new Error(`${type}라는 직원 유형은 없습니다`);
   }
-
-  return new Employee(name, type);
 }
 
 const engineer = new Engineer("홍길동", "engineer");
