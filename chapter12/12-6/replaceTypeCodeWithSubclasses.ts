@@ -1,21 +1,19 @@
 // 직접상속하는 경우
 class Employee {
   _name: string;
-  _type: string;
-  constructor(name, type) {
+  constructor(name: string, type: string) {
     this.validateType(type);
     this._name = name;
-    this._type = type;
   }
 
-  validateType(arg) {
+  validateType(arg: string) {
     if (!["engineer", "manager", "salesperson"].includes(arg)) {
       throw new Error(`${arg}라는 직원 유형은 없습니다.`);
     }
   }
 
   get type() {
-    return this._type;
+    return "";
   }
 
   toString() {
@@ -41,7 +39,7 @@ class Manager extends Employee {
   }
 }
 
-function createEmployee(name, type) {
+function createEmployee(name: string, type: string) {
   switch (type) {
     case "engineer":
       return new Engineer(name, type);
@@ -53,3 +51,6 @@ function createEmployee(name, type) {
 
   return new Employee(name, type);
 }
+
+const engineer = new Engineer("홍길동", "engineer");
+console.log(engineer.type);
