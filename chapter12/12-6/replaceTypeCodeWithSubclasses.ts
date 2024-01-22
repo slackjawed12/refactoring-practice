@@ -53,3 +53,5 @@ function createEmployee(name: string, type: string) {
 
 const engineer = new Engineer("홍길동");
 console.log(engineer.type);
+
+export default {};
