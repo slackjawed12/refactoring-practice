@@ -1,7 +1,7 @@
 // 직접상속하는 경우
 class Employee {
   _name: string;
-  constructor(name: string, type: string) {
+  constructor(name: string) {
     this._name = name;
   }
 
@@ -41,15 +41,15 @@ class Manager extends Employee {
 function createEmployee(name: string, type: string) {
   switch (type) {
     case "engineer":
-      return new Engineer(name, type);
+      return new Engineer(name);
     case "salesperson":
-      return new Salesperson(name, type);
+      return new Salesperson(name);
     case "manager":
-      return new Manager(name, type);
+      return new Manager(name);
     default:
       throw new Error(`${type}라는 직원 유형은 없습니다`);
   }
 }
 
-const engineer = new Engineer("홍길동", "engineer");
+const engineer = new Engineer("홍길동");
 console.log(engineer.type);
