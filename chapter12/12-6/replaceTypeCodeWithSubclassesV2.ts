@@ -13,6 +13,9 @@ class Employee {
       throw new Error(`${arg}라는 직원 유형은 없습니다.`);
     }
   }
+  get typeString() {
+    return this._type.toString();
+  }
 
   get type() {
     return this._type;
@@ -24,7 +27,8 @@ class Employee {
 
   get capitalizedType() {
     return (
-      this._type.charAt(0).toUpperCase() + this._type.substring(1).toLowerCase()
+      this.typeString.charAt(0).toUpperCase() +
+      this.typeString.substring(1).toLowerCase()
     );
   }
 
@@ -32,3 +36,16 @@ class Employee {
     return `${this._name} (${this.capitalizedType})`;
   }
 }
+
+class EmployeeType {
+  _value: string;
+  constructor(aString: string) {
+    this._value = aString;
+  }
+
+  toString() {
+    return this._value;
+  }
+}
+
+export default {};
