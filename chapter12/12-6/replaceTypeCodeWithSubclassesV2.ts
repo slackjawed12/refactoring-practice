@@ -1,11 +1,11 @@
 // 간접 상속하는 경우
 class Employee {
   _name: string;
-  _type: string;
+  _type: EmployeeType;
   constructor(name: string, type: string) {
     this.validateType(type);
     this._name = name;
-    this._type = type;
+    this.type = type;
   }
 
   validateType(arg: string) {
@@ -22,7 +22,7 @@ class Employee {
   }
 
   set type(arg: string) {
-    this._type = arg;
+    this._type = new EmployeeType(arg);
   }
 
   get capitalizedType() {
