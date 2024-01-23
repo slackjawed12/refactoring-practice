@@ -2,49 +2,54 @@
 class Employee {
   _name: string;
   _type: EmployeeType;
-  constructor(name: string, type: string) {
-    this.validateType(type);
+  constructor(name: string, type: EmployeeType) {
     this._name = name;
-    this.type = type;
+    this._type = type;
   }
 
-  validateType(arg: string) {
-    if (!["engineer", "manager", "salesperson"].includes(arg)) {
-      throw new Error(`${arg}라는 직원 유형은 없습니다.`);
-    }
-  }
-  get typeString() {
-    return this._type.toString();
+  toString() {
+    return `${this._name} (${this._type.capitalizedName})`;
   }
 
   get type() {
     return this._type;
   }
 
-  set type(arg: string) {
-    this._type = new EmployeeType(arg);
-  }
-
-  get capitalizedType() {
-    return (
-      this.typeString.charAt(0).toUpperCase() +
-      this.typeString.substring(1).toLowerCase()
-    );
-  }
-
-  toString() {
-    return `${this._name} (${this.capitalizedType})`;
+  static createEmployeeType(aString) {
+    switch (aString) {
+      case "engineer":
+        return new Engineer();
+      case "manager":
+        return new Manager();
+      case "salesperson":
+        return new Salesperson();
+      default:
+        throw new Error(`${aString}라는 직원 유형은 없습니다.`);
+    }
   }
 }
 
 class EmployeeType {
-  _value: string;
-  constructor(aString: string) {
-    this._value = aString;
+  get capitalizedName() {
+    return (
+      this.toString().charAt(0).toUpperCase() +
+      this.toString().substring(1).toLowerCase()
+    );
   }
-
+}
+class Engineer extends EmployeeType {
   toString() {
-    return this._value;
+    return "engineer";
+  }
+}
+class Manager extends EmployeeType {
+  toString() {
+    return "manager";
+  }
+}
+class Salesperson extends EmployeeType {
+  toString() {
+    return "salesperson";
   }
 }
 
