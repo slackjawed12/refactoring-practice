@@ -1,3 +1,5 @@
+class Party {}
+
 class Employee {
   _id;
   _name;
