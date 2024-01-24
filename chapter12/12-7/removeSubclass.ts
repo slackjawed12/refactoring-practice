@@ -19,18 +19,6 @@ class Person {
   }
 }
 
-class Male extends Person {
-  get genderCode() {
-    return "M";
-  }
-}
-
-class Female extends Person {
-  get genderCode() {
-    return "F";
-  }
-}
-
 // 서브클래스 사용자
 function loadFromInput(data) {
   return data.map((aRecord) => createPerson(aRecord));
@@ -39,9 +27,9 @@ function loadFromInput(data) {
 function createPerson(aRecord) {
   switch (aRecord.gender) {
     case "M":
-      return new Male(aRecord.name, "M");
+      return new Person(aRecord.name, "M");
     case "F":
-      return new Female(aRecord.name, "F");
+      return new Person(aRecord.name, "F");
     default:
       return new Person(aRecord.name, "X");
   }
