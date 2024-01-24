@@ -41,14 +41,14 @@ function createPerson(aRecord) {
     case "M":
       return new Male(aRecord.name, "M");
     case "F":
-      return new Female(aRecord.name);
+      return new Female(aRecord.name, "F");
     default:
-      return new Person(aRecord.name);
+      return new Person(aRecord.name, "X");
   }
 }
 
 // 클라이언트
 const people: Person[] = [];
-const numOfMales = people.filter((p) => p.isMale()).length;
+const numOfMales = people.filter((p) => p.isMale).length;
 
 export default {};
