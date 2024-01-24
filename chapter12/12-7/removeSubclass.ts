@@ -36,18 +36,14 @@ function loadFromInput(data) {
 }
 
 function createPerson(aRecord) {
-  let p;
   switch (aRecord.gender) {
     case "M":
-      p = new Male(aRecord.name);
-      break;
+      return new Male(aRecord.name);
     case "F":
-      p = new Female(aRecord.name);
-      break;
+      return new Female(aRecord.name);
     default:
-      p = new Person(aRecord.name);
+      return new Person(aRecord.name);
   }
-  return p;
 }
 
 export default {};
