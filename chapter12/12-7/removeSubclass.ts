@@ -43,5 +43,9 @@ function createPerson(aRecord) {
 
 // 클라이언트
 const people: Person[] = [];
-const numOfMales = people.filter((p) => p instanceof Male).length;
+const numOfMales = people.filter((p) => isMale(p)).length;
+
+function isMale(aPerson) {
+  return aPerson instanceof Male;
+}
 export default {};
