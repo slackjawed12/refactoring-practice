@@ -27,12 +27,7 @@ class Female extends Person {
 
 // 서브클래스 사용자
 function loadFromInput(data) {
-  const result: any[] = [];
-  data.forEach((aRecord) => {
-    result.push(createPerson(aRecord));
-  });
-
-  return result;
+  return data.map((aRecord) => createPerson(aRecord));
 }
 
 function createPerson(aRecord) {
