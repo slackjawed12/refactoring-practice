@@ -17,10 +17,6 @@ class Employee extends Party {
     return this._monthlyCost;
   }
 
-  get name() {
-    return this._name;
-  }
-
   get id() {
     return this._id;
   }
@@ -39,10 +35,6 @@ class Department extends Party {
 
   get staff() {
     return this._staff.slice();
-  }
-
-  get name() {
-    return this._name;
   }
 
   get totalMonthlyCost() {
