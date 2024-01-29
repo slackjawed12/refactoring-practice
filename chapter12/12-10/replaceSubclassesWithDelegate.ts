@@ -1,4 +1,4 @@
-class Booking {
+export class Booking {
   _show: Show;
   _date: Date;
   constructor(show: Show, date: Date) {
@@ -23,7 +23,7 @@ class Booking {
   }
 }
 
-class PremiumBooking extends Booking {
+export class PremiumBooking extends Booking {
   _extras: Extra;
   constructor(show: Show, date: Date, extras: Extra) {
     super(show, date);
@@ -44,7 +44,7 @@ class PremiumBooking extends Booking {
   }
 }
 
-class Show {
+export class Show {
   _price: number;
   talkback?: boolean;
   constructor(price: number, talkback: boolean) {
@@ -59,7 +59,7 @@ class Show {
   }
 }
 
-class Extra {
+export class Extra {
   _premiumFee: number;
   dinner?: boolean;
   constructor(premiumFee: number, isDinner: boolean) {
@@ -74,10 +74,22 @@ class Extra {
   }
 }
 
+function createBooking(show: Show, date: Date) {
+  return new Booking(show, date);
+}
+
+function createPremiumBooking(show: Show, date: Date, extras: Extra) {
+  return new PremiumBooking(show, date, extras);
+}
+
 // 클라이언트 ...
 const show = new Show(100000, false);
-const aBooking = new Booking(show, new Date());
+const date = new Date();
+const aBooking = createBooking(show, date);
 // ...
 const show2 = new Show(100000, true);
+const date2 = new Date();
 const extras = new Extra(50000, false);
-const premiumBooking = new PremiumBooking(show2, new Date(), extras);
+const premiumBooking = createPremiumBooking(show2, date2, extras);
+
+export default {};
