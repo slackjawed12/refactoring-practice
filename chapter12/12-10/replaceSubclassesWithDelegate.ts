@@ -1,6 +1,7 @@
 export class Booking {
   _show: Show;
   _date: Date;
+  _premiumDelegate: PremiumBookingDelegate;
   constructor(show: Show, date: Date) {
     this._show = show;
     this._date = date;
@@ -20,6 +21,10 @@ export class Booking {
 
   get isPeakDay() {
     return false;
+  }
+
+  _bePremium(extras: Extra) {
+    this._premiumDelegate = new PremiumBookingDelegate(this, extras);
   }
 }
 
@@ -83,12 +88,14 @@ export class PremiumBookingDelegate {
   }
 }
 
-function createBooking(show: Show, date: Date) {
+export function createBooking(show: Show, date: Date) {
   return new Booking(show, date);
 }
 
-function createPremiumBooking(show: Show, date: Date, extras: Extra) {
-  return new PremiumBooking(show, date, extras);
+export function createPremiumBooking(show: Show, date: Date, extras: Extra) {
+  const result = new PremiumBooking(show, date, extras);
+  result._bePremium(extras);
+  return result;
 }
 
 // 클라이언트 ...
