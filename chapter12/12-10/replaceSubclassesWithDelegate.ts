@@ -74,6 +74,15 @@ export class Extra {
   }
 }
 
+export class PremiumBookingDelegate {
+  _host: Booking;
+  _extras: Extra;
+  constructor(hostBooking: Booking, extras: Extra) {
+    this._host = hostBooking;
+    this._extras = extras;
+  }
+}
+
 function createBooking(show: Show, date: Date) {
   return new Booking(show, date);
 }
