@@ -14,17 +14,13 @@ export class Booking {
   }
 
   get basePrice() {
-    return this._premiumDelegate
-      ? this._premiumDelegate.basePrice
-      : this._privateBasePrice;
-  }
-
-  get _privateBasePrice() {
     let result = this._show.price;
     if (this.isPeakDay) {
       result += Math.round(result * 0.15);
     }
-    return result;
+    return this._premiumDelegate
+      ? this._premiumDelegate.extendBasePrice(result)
+      : result;
   }
 
   get isPeakDay() {
@@ -95,8 +91,8 @@ export class PremiumBookingDelegate {
     return this._host._show.hasOwnProperty("talkback");
   }
 
-  get basePrice() {
-    return Math.round(this._host._privateBasePrice + this._extras.premiumFee);
+  extendBasePrice(base: number) {
+    return Math.round(base + this._extras.premiumFee);
   }
 }
 
