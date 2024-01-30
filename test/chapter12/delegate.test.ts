@@ -72,4 +72,18 @@ describe("서브클래스를 위임으로 바꾸기 테스트", () => {
     expect(result3).toBe(true);
     expect(result4).toBe(false);
   });
+  it("기본가격 조회", () => {
+    const booking = createBooking(new Show(100000, true), new Date());
+    const premiumBooking = createPremiumBooking(
+      new Show(100000, false),
+      new Date(),
+      new Extra(10000, false)
+    );
+
+    const result = booking.basePrice;
+    const result2 = premiumBooking.basePrice;
+
+    expect(result).toBe(100000);
+    expect(result2).toBe(110000);
+  });
 });
