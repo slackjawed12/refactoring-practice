@@ -36,23 +36,6 @@ export class Booking {
   }
 }
 
-export class PremiumBooking extends Booking {
-  _extras: Extra;
-  constructor(show: Show, date: Date, extras: Extra) {
-    super(show, date);
-    this._extras = extras;
-  }
-
-  get basePrice() {
-    return Math.round(super.basePrice + this._extras.premiumFee);
-  }
-
-  // 슈퍼클래스에는 없는 기능
-  get hasDinner() {
-    return this._extras.hasOwnProperty("dinner") && !this.isPeakDay;
-  }
-}
-
 export class Show {
   _price: number;
   talkback?: boolean;

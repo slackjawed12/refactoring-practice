@@ -1,7 +1,6 @@
 import {
   Booking,
   Extra,
-  PremiumBooking,
   PremiumBookingDelegate,
   Show,
   createBooking,
@@ -21,7 +20,7 @@ describe("서브클래스를 위임으로 바꾸기 테스트", () => {
     //given
     const show = new Show(100000, true);
     const extras = new Extra(50000, false);
-    const premiumBooking = new PremiumBooking(show, new Date(), extras);
+    const premiumBooking = createPremiumBooking(show, new Date(), extras);
 
     const result = premiumBooking.basePrice;
     expect(result).toBe(150000);
