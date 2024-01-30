@@ -49,4 +49,27 @@ describe("서브클래스를 위임으로 바꾸기 테스트", () => {
     const result = createPremiumBooking(show, new Date(), extras);
     expect(result._premiumDelegate._host).toBe(result);
   });
+  it("관객과의 대화 조회", () => {
+    // given
+    const booking = createBooking(new Show(100000, true), new Date());
+    const noTalkBooking = createBooking(new Show(100000, false), new Date());
+    const premiumBooking = createPremiumBooking(
+      new Show(100000, true),
+      new Date(),
+      new Extra(10000, false)
+    );
+    const noTalkPremiumBooking = createPremiumBooking(
+      new Show(100000, false),
+      new Date(),
+      new Extra(10000, false)
+    );
+    const result = booking.hasTalkback;
+    const result2 = noTalkBooking.hasTalkback;
+    const result3 = premiumBooking.hasTalkback;
+    const result4 = noTalkPremiumBooking.hasTalkback;
+    expect(result).toBe(true);
+    expect(result2).toBe(false);
+    expect(result3).toBe(true);
+    expect(result4).toBe(false);
+  });
 });
