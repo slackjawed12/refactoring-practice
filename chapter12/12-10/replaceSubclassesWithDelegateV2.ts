@@ -27,7 +27,9 @@ class Bird {
   }
 
   get airSpeedVelocity() {
-    return 0;
+    return this._speciesDelegate
+      ? this._speciesDelegate.airSpeedVelocity
+      : null;
   }
 
   selectSpeciesDelegate(data: BirdData) {
@@ -41,8 +43,12 @@ class Bird {
 }
 
 class EuropeanSwallow extends Bird {
+  constructor(data: BirdData) {
+    super(data);
+  }
+
   get airSpeedVelocity() {
-    return 35;
+    return this._speciesDelegate.airSpeedVelocity;
   }
 }
 
@@ -76,7 +82,11 @@ class NorwegianBlueParrot extends Bird {
   }
 }
 
-class EuropeanSwallowDelegate {}
+class EuropeanSwallowDelegate {
+  get airSpeedVelocity() {
+    return 35;
+  }
+}
 
 function createBird(data: BirdData) {
   switch (data.type) {
