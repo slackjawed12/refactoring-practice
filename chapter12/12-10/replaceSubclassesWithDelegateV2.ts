@@ -65,6 +65,8 @@ class NorwegianBlueParrot extends Bird {
   }
 }
 
+class EuropeanSwallowDelegate {}
+
 function createBird(data: BirdData) {
   switch (data.type) {
     case "유럽 제비":
