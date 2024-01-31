@@ -11,9 +11,11 @@ type BirdData = {
 class Bird {
   _name: string;
   _plumage: string;
+  _speciesDelegate;
   constructor(data: BirdData) {
     this._name = data.name;
     this._plumage = data.plumage;
+    this._speciesDelegate = this.selectSpeciesDelegate(data);
   }
 
   get name() {
@@ -26,6 +28,15 @@ class Bird {
 
   get airSpeedVelocity() {
     return 0;
+  }
+
+  selectSpeciesDelegate(data: BirdData) {
+    switch (data.type) {
+      case "유럽 제비":
+        return new EuropeanSwallowDelegate();
+      default:
+        return null;
+    }
   }
 }
 
