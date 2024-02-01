@@ -52,7 +52,7 @@ class AfricanSwallow extends Bird {
   }
 
   get airSpeedVelocity() {
-    return 40 - 2 * this._numberOfCoconuts;
+    return this._speciesDelegate.airSpeedVelocity;
   }
 }
 
@@ -88,6 +88,10 @@ class AfricanSwallowDelegate {
   _numberOfCoconuts: number;
   constructor(data: BirdData) {
     this._numberOfCoconuts = data.numberOfCoconuts;
+  }
+
+  get airSpeedVelocity() {
+    return 40 - 2 * this._numberOfCoconuts;
   }
 }
 
