@@ -44,18 +44,6 @@ class Bird {
   }
 }
 
-class AfricanSwallow extends Bird {
-  _numberOfCoconuts: number;
-  constructor(data: BirdData) {
-    super(data);
-    this._numberOfCoconuts = data.numberOfCoconuts;
-  }
-
-  get airSpeedVelocity() {
-    return this._speciesDelegate.airSpeedVelocity;
-  }
-}
-
 class NorwegianBlueParrot extends Bird {
   _voltage: number;
   _isNailed: boolean;
@@ -97,8 +85,6 @@ class AfricanSwallowDelegate {
 
 function createBird(data: BirdData) {
   switch (data.type) {
-    case "아프리카 제비":
-      return new AfricanSwallow(data);
     case "노르웨이 파랑 앵무":
       return new NorwegianBlueParrot(data);
     default:
