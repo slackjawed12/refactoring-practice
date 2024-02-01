@@ -22,6 +22,15 @@ class Bird {
     return this._name;
   }
 
+  // plumage 속성 없는 위임에서는 오류 발생함
+  // get plumage() {
+  //   if(this._speciesDelegate) {
+  //     return this._speciesDelegate.plumage;
+  //   } else {
+  //     return this._plumage || "보통이다"
+  //   }
+  // }
+
   get plumage() {
     return this._plumage || "보통이다";
   }
@@ -64,15 +73,27 @@ class NorwegianBlueParrot extends Bird {
   }
 }
 
-class EuropeanSwallowDelegate {
+class SpeciesDelegate {
+  _bird: Bird;
+  constructor(data, bird) {
+    this._bird = bird;
+  }
+
+  get plumage() {
+    return this._bird._plumage || "보통이다";
+  }
+}
+
+class EuropeanSwallowDelegate extends SpeciesDelegate {
   get airSpeedVelocity() {
     return 35;
   }
 }
 
-class AfricanSwallowDelegate {
+class AfricanSwallowDelegate extends SpeciesDelegate {
   _numberOfCoconuts: number;
-  constructor(data: BirdData) {
+  constructor(data: BirdData, bird: Bird) {
+    super(data, bird);
     this._numberOfCoconuts = data.numberOfCoconuts;
   }
 
@@ -81,11 +102,12 @@ class AfricanSwallowDelegate {
   }
 }
 
-class NorwegianBlueParrotDelegate {
+class NorwegianBlueParrotDelegate extends SpeciesDelegate {
   _voltage: number;
   _isNailed: boolean;
   _bird: Bird;
-  constructor(data: BirdData, bird) {
+  constructor(data: BirdData, bird: Bird) {
+    super(data, bird);
     this._bird = bird;
     this._voltage = data.voltage;
     this._isNailed = data.isNailed;
