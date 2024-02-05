@@ -32,44 +32,24 @@ class Bird {
   // }
 
   get plumage() {
-    return this._plumage || "보통이다";
-  }
-
-  get airSpeedVelocity() {
-    return this._speciesDelegate
-      ? this._speciesDelegate.airSpeedVelocity
-      : null;
-  }
-
-  selectSpeciesDelegate(data: BirdData) {
-    switch (data.type) {
-      case "유럽 제비":
-        return new EuropeanSwallowDelegate();
-      case "아프리카 제비":
-        return new AfricanSwallowDelegate(data);
-      case "노르웨이 파랑 앵무":
-        return new NorwegianBlueParrotDelegate(data, this);
-      default:
-        return null;
-    }
-  }
-}
-
-class NorwegianBlueParrot extends Bird {
-  _voltage: number;
-  _isNailed: boolean;
-  constructor(data: BirdData) {
-    super(data);
-    this._voltage = data.voltage;
-    this._isNailed = data.isNailed;
-  }
-
-  get plumage() {
     return this._speciesDelegate.plumage;
   }
 
   get airSpeedVelocity() {
     return this._speciesDelegate.airSpeedVelocity;
+  }
+
+  selectSpeciesDelegate(data: BirdData) {
+    switch (data.type) {
+      case "유럽 제비":
+        return new EuropeanSwallowDelegate(data, this);
+      case "아프리카 제비":
+        return new AfricanSwallowDelegate(data, this);
+      case "노르웨이 파랑 앵무":
+        return new NorwegianBlueParrotDelegate(data, this);
+      default:
+        return new SpeciesDelegate(data, this);
+    }
   }
 }
 
@@ -81,6 +61,10 @@ class SpeciesDelegate {
 
   get plumage() {
     return this._bird._plumage || "보통이다";
+  }
+
+  get airSpeedVelocity() {
+    return 0;
   }
 }
 
@@ -127,10 +111,5 @@ class NorwegianBlueParrotDelegate extends SpeciesDelegate {
 }
 
 function createBird(data: BirdData) {
-  switch (data.type) {
-    case "노르웨이 파랑 앵무":
-      return new NorwegianBlueParrot(data);
-    default:
-      return new Bird(data);
-  }
+  return new Bird(data);
 }
