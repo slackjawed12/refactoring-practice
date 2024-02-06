@@ -25,9 +25,9 @@ export class Scroll {
   _id: number;
   _lastCleaned;
   _catalogItem: CatalogItem;
-  constructor(id: number, title: string, tags: string[], dateLastCleaned) {
+  constructor(id: number, dateLastCleaned, catalogID, catalog) {
     this._id = id;
-    this._catalogItem = new CatalogItem(null, title, tags);
+    this._catalogItem = catalog.get(catalogID);
     this._lastCleaned = dateLastCleaned;
   }
 
@@ -59,10 +59,11 @@ class ChronoUnit {
 
 export default {};
 
-// 클라이언트 코드 ...
+// 클라이언트 코드 //
 type RecordType = {
   id: number;
   catalogData: {
+    id: number;
     title: string;
     tags: string[];
   };
@@ -73,13 +74,30 @@ class LocalDate {
   static parse(str: string) {}
 }
 
+class CatalogRepository {
+  _data: CatalogItem[];
+  constructor(data: CatalogItem[]) {
+    this._data = data;
+  }
+
+  get(id: number) {
+    return this._data.find((val) => val.id === id);
+  }
+}
+
 const aDocument: RecordType[] = [];
+// 저장소...
+const catalog = new CatalogRepository([
+  new CatalogItem(1, "카탈로그1", ["굿"]),
+  new CatalogItem(2, "카탈로그2", ["배드"]),
+]);
+
 const scrolls = aDocument.map(
   (record) =>
     new Scroll(
       record.id,
-      record.catalogData.title,
-      record.catalogData.tags,
-      LocalDate.parse(record.lastCleaned)
+      LocalDate.parse(record.lastCleaned),
+      record.catalogData.id,
+      catalog
     )
 );
