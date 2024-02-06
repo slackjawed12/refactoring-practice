@@ -22,10 +22,12 @@ export class CatalogItem {
 }
 
 export class Scroll {
+  _id: number;
   _lastCleaned;
   _catalogItem: CatalogItem;
   constructor(id: number, title: string, tags: string[], dateLastCleaned) {
-    this._catalogItem = new CatalogItem(id, title, tags);
+    this._id = id;
+    this._catalogItem = new CatalogItem(null, title, tags);
     this._lastCleaned = dateLastCleaned;
   }
 
@@ -56,3 +58,28 @@ class ChronoUnit {
 }
 
 export default {};
+
+// 클라이언트 코드 ...
+type RecordType = {
+  id: number;
+  catalogData: {
+    title: string;
+    tags: string[];
+  };
+  lastCleaned: string;
+};
+
+class LocalDate {
+  static parse(str: string) {}
+}
+
+const aDocument: RecordType[] = [];
+const scrolls = aDocument.map(
+  (record) =>
+    new Scroll(
+      record.id,
+      record.catalogData.title,
+      record.catalogData.tags,
+      LocalDate.parse(record.lastCleaned)
+    )
+);
