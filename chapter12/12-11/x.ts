@@ -24,8 +24,8 @@ export class CatalogItem {
 export class Scroll extends CatalogItem {
   _lastCleaned;
   _catalogItem: CatalogItem;
-  constructor(id: number, title: string, tag: string[], dateLastCleaned) {
-    super(id, title, tag);
+  constructor(id: number, title: string, tags: string[], dateLastCleaned) {
+    super(id, title, tags);
     this._catalogItem = new CatalogItem(id, title, tags);
     this._lastCleaned = dateLastCleaned;
   }
