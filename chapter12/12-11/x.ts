@@ -21,11 +21,10 @@ export class CatalogItem {
   }
 }
 
-export class Scroll extends CatalogItem {
+export class Scroll {
   _lastCleaned;
   _catalogItem: CatalogItem;
   constructor(id: number, title: string, tags: string[], dateLastCleaned) {
-    super(id, title, tags);
     this._catalogItem = new CatalogItem(id, title, tags);
     this._lastCleaned = dateLastCleaned;
   }
